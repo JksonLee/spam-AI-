@@ -8,25 +8,25 @@ cv_loaded = load('count_vectorizer.joblib')
 
 # Streamlit application starts here
 def main():
-# Title of your web app
-st.title("Spam/Ham Prediction App")
+    # Title of your web app
+    st.title("Spam/Ham Prediction App")
 
-# Text box for user input
-user_input = st.text_input("Enter a sentence to check if it's spam or ham:")
+    # Text box for user input
+    user_input = st.text_input("Enter a sentence to check if it's spam or ham:")
 
-# Predict button
-if st.button('Predict'):
-if user_input:  # Check if the input is not empty
-# Transform the user input
-df = pd.DataFrame([user_input], columns=['text'])
-Snew = cv_loaded.transform(df['text'])
+    # Predict button
+    if st.button('Predict'):
+        if user_input:  # Check if the input is not empty
+            # Transform the user input
+            df = pd.DataFrame([user_input], columns=['text'])
+           Snew = cv_loaded.transform(df['text'])
 
-# Make a prediction
-result = lr_loaded.predict(Snew)
-st.write(f"Predicted value: {result[0]}")
+            # Make a prediction
+            result = lr_loaded.predict(Snew)
+            st.write(f"Predicted value: {result[0]}")
 
-else:
-st.error("Please enter a sentence for prediction.")
+        else:
+            st.error("Please enter a sentence for prediction.")
 
 if __name__ == '__main__':
-main()
+    main()
