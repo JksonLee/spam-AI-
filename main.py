@@ -19,7 +19,7 @@ def main():
         if user_input:  # Check if the input is not empty
             # Transform the user input
             df = pd.DataFrame([user_input], columns=['text'])
-           Snew = cv_loaded.transform(df['text'])
+            Snew = cv_loaded.transform(df['text'])
 
             # Make a prediction
             result = lr_loaded.predict(Snew)
